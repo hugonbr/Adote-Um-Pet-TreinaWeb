@@ -13,7 +13,6 @@ O projeto trata-se de uma plataforma online para a adoção de pets.
 - [TypeScript](https://www.typescriptlang.org/)
 - [Docker](https://www.docker.com/)
 - [Django](https://www.djangoproject.com/)
-- [Expo](https://expo.dev/)
 
 ---
 
