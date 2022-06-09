@@ -19,13 +19,18 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # Third Apps,
-    "rest_framework",
-    "django_filters",
-    # Apps
-    "pet",
-    "adocao",
 ]
+
+THIRD_APPS = [
+    "rest_framework",
+]
+
+MY_APPS = [
+    "pet.apps.PetConfig",
+    "adocao.apps.AdocaoConfig",
+]
+
+INSTALLED_APPS = DJANGO_APPS + THIRD_APPS + MY_APPS
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -129,3 +134,11 @@ SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_CACHE_ALIAS = "default"
 
 LOCALE_PATHS = (os.path.join(BASE_DIR, "locales/"),)
+
+# EMAIL
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "adoteumpetpython@gmail.com"
+EMAIL_HOST_PASSWORD = "nyzywdjgbvzpiptu"
