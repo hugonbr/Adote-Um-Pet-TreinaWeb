@@ -1,0 +1,6 @@
+venv/
+media/
+/.idea
+/.vscode
+
+.env

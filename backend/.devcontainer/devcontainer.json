@@ -1,0 +1,79 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.217.1/containers/docker-existing-docker-compose
+// If you want to run as a non-root user in the container, see .devcontainer/docker-compose.yml.
+{
+  "name": "Django Container",
+  // Update the 'dockerComposeFile' list if you have more compose files or use different names.
+  // The .devcontainer/docker-compose.yml file contains any overrides you need/want to make.
+  "dockerComposeFile": ["../docker-compose.yml", "docker-compose.yml"],
+  // The 'service' property is the name of the service for the container that VS Code should
+  // use. Update this value and .devcontainer/docker-compose.yml to the real service name.
+  "service": "web",
+  // The optional 'workspaceFolder' property is the path VS Code should open by default when
+  // connected. This is typically a file mount in .devcontainer/docker-compose.yml
+  "workspaceFolder": "/django/",
+  // Set *default* container specific settings.json values on container create.
+  "settings": {
+    "files.associations": {
+      "**/*.html": "html",
+      "**/templates/*/*.html": "django-html",
+      "**/templates/*": "django-txt",
+      "**/requirements{/**,*}.{txt,in}": "pip-requirements",
+      ".env.*": "dotenv"
+    },
+
+    // Python
+    "python.formatting.provider": "black",
+    "python.linting.pydocstyleEnabled": true,
+    "python.linting.mypyEnabled": true,
+    "python.linting.banditEnabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.formatting.blackArgs": ["--line-length", "79"],
+    "[python]": {
+      "editor.formatOnPaste": true
+    },
+    "python.linting.enabledWithoutWorkspace": false,
+    "python.linting.pylintArgs": ["--errors-only"],
+
+    // Format HTML Django templates
+    "beautify.language": {
+      "js": {
+        "type": ["javascript", "typescript", "json"],
+        "filename": [".jshintrc", ".jsbeautify"]
+      },
+      "css": ["css", "scss"],
+      "html": ["htm", "html", "django-html"]
+    },
+
+    // Auto Close Tag & Auto Rename Tag
+    "auto-close-tag.enableAutoCloseTag": true,
+    "auto-close-tag.enableAutoCloseSelfClosingTag": true,
+    "auto-close-tag.insertSpaceBeforeSelfClosingTag": false,
+    "auto-close-tag.activationOnLanguage": ["django-html", "jinja"],
+    "auto-rename-tag.activationOnLanguage": ["django-html", "html"]
+  },
+  // Add the IDs of extensions you want installed when the container is created.
+  "extensions": [
+    "formulahendry.auto-close-tag",
+    "formulahendry.auto-rename-tag",
+    "steoates.autoimport",
+    "bungcip.better-toml",
+    "kamikillerto.vscode-colorize",
+    "batisteo.vscode-django",
+    "IronGeek.vscode-env",
+    "ecmel.vscode-html-css",
+    "magicstack.MagicPython",
+    "ms-python.python",
+    "HookyQR.beautify"
+  ],
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // "forwardPorts": [],
+  // Uncomment the next line if you want start specific services in your Docker Compose config.
+  // "runServices": [],
+  // Uncomment the next line if you want to keep your containers running after VS Code shuts down.
+  // "shutdownAction": "none",
+  // Uncomment the next line to run commands after the container is created - for example installing curl.
+  "postCreateCommand": "apk update"
+  // Uncomment to connect as a non-root user if you've added one. See https://aka.ms/vscode-remote/containers/non-root.
+  // "remoteUser": "vscode"
+}
